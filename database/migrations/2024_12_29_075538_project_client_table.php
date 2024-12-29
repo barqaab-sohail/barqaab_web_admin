@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('short_name');
             $table->string('mono');
+            $table->timestamps();
         });
     }
 
