@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project\ProjectType;
+use App\Models\Management;
 use Illuminate\Http\Request;
+use App\Models\Project\ProjectType;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,14 @@ class HomeController extends Controller
     public function management()
     {
 
-        $projectTypes = ProjectType::all();
-        return view('management', compact('projectTypes'));
+        $management = Management::all();
+        return view('management', compact('management'));
+    }
+
+    public function services()
+    {
+
+        $services = Management::all();
+        return view('services', compact('services'));
     }
 }
