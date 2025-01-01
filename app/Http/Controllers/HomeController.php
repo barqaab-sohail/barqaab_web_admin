@@ -13,4 +13,11 @@ class HomeController extends Controller
         $projectTypes = ProjectType::all();
         return view('projects', compact('projectTypes'));
     }
+
+    public function management()
+    {
+
+        $projectTypes = ProjectType::all();
+        return view('management', compact('projectTypes'));
+    }
 }
