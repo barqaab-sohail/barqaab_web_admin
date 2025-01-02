@@ -34,11 +34,11 @@ class ManagementResource extends Resource
 
         return $form
             ->schema([
-                TextInput::make('name'),
-                TextInput::make('designation'),
-                RichEditor::make('description'),
-                FileUpload::make('picture')->disk('public')->directory('management'),
-                TextInput::make('placement')->integer()->unique(ignoreRecord: true),
+                TextInput::make('name')->required()->rules(['required']),
+                TextInput::make('designation')->required()->rules(['required']),
+                RichEditor::make('description')->required()->rules(['required']),
+                FileUpload::make('picture')->disk('public')->directory('management')->required()->rules(['required']),
+                TextInput::make('placement')->integer()->unique(ignoreRecord: true)->required()->rules(['required']),
                 Toggle::make('status')
             ]);
     }

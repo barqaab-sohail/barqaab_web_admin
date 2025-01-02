@@ -28,15 +28,15 @@ class EditManagement extends EditRecord
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
 
-        if (!empty($data['picture'])) {
-            $oldPath = $record->picture;
+        $oldPath = $record->picture;
+       
+        $record->update($data);
+
+        if (!empty($data['picture']) && $oldPath != $record->picture ) {
             if ($oldPath) {
                 Storage::disk('public')->delete($oldPath);
             }
         }
-
-
-        $record->update($data);
 
         return $record;
     }

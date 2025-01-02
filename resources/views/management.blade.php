@@ -25,11 +25,7 @@
 
 <section id="main-container" class="main-container pb-4">
   <div class="container">
-    <div class="row text-center">
-      <div class="col-lg-12">
-        <h3 class="section-sub-title">MANAGEMENT</h3>
-      </div>
-    </div>
+    
     <!--/ Title row end -->
 
     <div class="row justify-content-center">

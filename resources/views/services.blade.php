@@ -23,36 +23,28 @@
 
 <!-- Banner area end -->
 
-<section id="main-container" class="main-container pb-4">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <h3 class="section-sub-title">MANAGEMENT</h3>
+<section id="main-container" class="main-container pb-2">
+  <div class="container">
+    <div class="row">
+        @foreach ($services as $service)
+      <div class="col-lg-4 col-md-6 mb-5">
+        <div class="ts-service-box">
+            <div class="ts-service-image-wrapper">
+              <img loading="lazy" class="w-100" src="{{url('/storage')}}{{'/'}}{{$service->image}}" alt="service-image">
             </div>
-        </div>
-        <!--/ Title row end -->
+          
+              
+              <div class="ts-service-info">
+                  <h3 class="service-box-title">{{$service->name}}</h3>
+                  <p>{!!$service->description!!}</p>
+              </div>
+          
+        </div><!-- Service1 end -->
+      </div><!-- Col 1 end -->
+    @endforeach
+      
 
-        <div class="row justify-content-center">
-            @foreach ($management as $employee)
-            <div class="col-lg-12 col-sm-6 mb-5">
-                <div class="ts-team-wrapper">
-                    <div class="team-img-wrapper">
-                        <img loading="lazy" src="{{url('/storage')}}{{'/'}}{{$employee->picture}}" height="200"
-                            alt="team-img">
-                    </div>
-                    <div class="ts-team-content-classic">
-                        <h3 class="ts-name">{{$employee->name}}</h3>
-                        <p class="ts-designation">{{$employee->designation}}</p>
-                        <p class="ts-description">{!!$employee->description!!}</p>
-                        <!--/ social-icons-->
-                    </div>
-                </div>
-                <!--/ Team wrapper 1 end -->
-
-            </div><!-- Col end -->
-            @endforeach
-        </div><!-- Content row end -->
-
-    </div><!-- Container end -->
+    </div><!-- Main row end -->
+  </div><!-- Conatiner end -->
 </section><!-- Main container end -->
 @stop

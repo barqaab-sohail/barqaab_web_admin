@@ -17,7 +17,7 @@
 
                         <div id="navbar-collapse" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav mr-auto">
-                                <li class="nav-item dropdown active">
+                                <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Home <i
                                             class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu" role="menu">
@@ -25,10 +25,10 @@
                                         <li><a href="index-2.html">Home Two</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('management')}}">Management</a>
+                                <li class="nav-item {{Request::is('management')?'active':''}}"><a class="nav-link" href="{{route('management')}}">Management</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{{route('project')}}">Project</a>
-                                <li class="nav-item"><a class="nav-link" href="{{route('services')}}">Services</a>
+                                <li class="nav-item {{Request::is('projectlist')?'active':''}}"><a class="nav-link" href="{{route('project')}}">Project</a>
+                                <li class="nav-item {{Request::is('services')?'active':''}}"><a class="nav-link" href="{{route('services')}}">Services</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Company
