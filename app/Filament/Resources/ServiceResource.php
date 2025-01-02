@@ -8,6 +8,7 @@ use App\Models\Service;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ServiceResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ServiceResource\RelationManagers;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\ToggleColumn;
 
 class ServiceResource extends Resource
 {
@@ -30,7 +33,9 @@ class ServiceResource extends Resource
             ->schema([
                 TextInput::make('name')->required()->rules(['required']),
                 FileUpload::make('image')->required()->disk('public')->directory('services')->required()->rules(['required']),
-                RichEditor::make('description')->columnSpan(2)->required()->rules(['required'])
+                RichEditor::make('description')->columnSpan(2)->required()->rules(['required']),
+                TextInput::make('placement')->integer()->unique(ignoreRecord: true)->required()->rules(['required']),
+                Toggle::make('status')
 
             ]);
     }
@@ -41,6 +46,8 @@ class ServiceResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Service Name'),
                 ImageColumn::make('image'),
+                TextColumn::make('placement'),
+                ToggleColumn::make('status')
             ])
             ->filters([
                 //
