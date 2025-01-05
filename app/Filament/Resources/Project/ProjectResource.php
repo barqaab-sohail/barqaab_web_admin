@@ -8,7 +8,6 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\Project\Project;
 use Filament\Resources\Resource;
-use App\Models\Project\ProjectType;
 use App\Models\Project\ProjectClient;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -21,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\Project\ProjectResource\Pages;
 use App\Filament\Resources\Project\ProjectResource\RelationManagers;
+use App\Models\Project\ProjectCategory;
 
 class ProjectResource extends Resource
 {
@@ -43,7 +43,7 @@ class ProjectResource extends Resource
                 DatePicker::make('commencement_date')->required()->rules(['required']),
                 DatePicker::make('completion_date')->required()->rules(['required']),
                 Select::make('project_client_id')->label('Client')->options(ProjectClient::pluck('name', 'id')),
-                Select::make('project_type_id')->label('Project Type')->options(ProjectType::pluck('name', 'id')),
+                Select::make('project_category_id')->label('Project Type')->options(ProjectCategory::pluck('name', 'id')),
                 TextInput::make('placement')->integer()->unique(ignoreRecord: true),
                 Toggle::make('status'),
                 RichEditor::make('description')->columnSpan(2)
@@ -58,7 +58,7 @@ class ProjectResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('projectClient.short_name')->label('Client'),
-                TextColumn::make('projectType.name')->label('Type'),
+                TextColumn::make('projectCategory.name')->label('Project Category'),
                 ToggleColumn::make('status')
             ])
             ->filters([

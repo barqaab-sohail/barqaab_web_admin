@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('share');
             $table->integer('placement');
             $table->boolean('status');
-            $table->bigInteger('project_type_id')->unsigned()->foreign('project_type_id')->references('id')->on('project_type')->onDelete('cascade');
+            $table->bigInteger('project_category_id')->unsigned()->foreign('project_category_id')->references('id')->on('project_categories')->onDelete('cascade');
             $table->bigInteger('project_client_id')->unsigned()->foreign('project_client_id')->references('id')->on('project_client');
             $table->timestamps();
         });

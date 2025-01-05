@@ -15,8 +15,8 @@ class Project extends Model
         return $this->belongsTo(ProjectClient::class);
     }
 
-    public function projectType()
+    public function projectCategory()
     {
-        return $this->belongsTo(ProjectType::class);
+        return $this->belongsTo(ProjectCategory::class);
     }
 }
