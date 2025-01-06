@@ -35,9 +35,9 @@
                         All
                     </label>
                     @foreach($projectTypes as $projectType)
-                    <label for="commercial">
-                        <input type="radio" name="shuffle-filter" id="commercial"
-                            value="commercial">{{$projectType->name}}
+                    <label for="{{$projectType->name}}">
+                        <input type="radio" name="shuffle-filter" id="{{$projectType->name}}"
+                            value="{{$projectType->name}}">{{$projectType->name}}
                     </label>
                     @endforeach
                     <label for="education">
@@ -73,9 +73,9 @@
 
                 <div class="row shuffle-wrapper">
                     <div class="col-1 shuffle-sizer"></div>
-
+                    @foreach($projects as $project)
                     <div class="col-lg-4 col-md-6 shuffle-item"
-                        data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
+                        data-groups="[&quot;{{$project->projectCategory->name}}&quot;]">
                         <div class="project-img-container">
                             <a class="gallery-popup" href="/project/images/projects/project1.jpg">
                                 <img class="img-fluid" src="/project/images/projects/project1.jpg" alt="project-image">
@@ -86,11 +86,13 @@
                                     <h3 class="project-item-title">
                                         <a href="projects-single.html">Capital Teltway Building</a>
                                     </h3>
-                                    <p class="project-cat">Commercial, Interiors</p>
+                                    <p class="project-cat">{{$project->projectCategory->name}}</p>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- shuffle item 1 end -->
+                    </div>
+                    @endforeach
+                    <!-- shuffle item 1 end -->
 
                     <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
                         <div class="project-img-container">

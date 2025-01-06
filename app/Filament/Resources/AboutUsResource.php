@@ -25,8 +25,8 @@ class AboutUsResource extends Resource
     {
         return $form
             ->schema([
-                // RichEditor::make('description')->required()->rules(['required']),
-                Map::make('location'),
+               RichEditor::make('description')->required()->rules(['required']),
+               
             ]);
     }
 

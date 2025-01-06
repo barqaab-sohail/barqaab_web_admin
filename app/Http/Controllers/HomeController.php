@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Management;
 use App\Models\Service;
+use App\Models\Management;
 use Illuminate\Http\Request;
+use App\Models\Project\Project;
 use App\Models\Project\ProjectType;
+use App\Models\Project\ProjectCategory;
 
 class HomeController extends Controller
 {
     public function project()
     {
 
-        $projectTypes = ProjectType::all();
-        return view('projects', compact('projectTypes'));
+        $projectTypes = ProjectCategory::all();
+        $projects = Project::all();
+        return view('projects', compact('projectTypes', 'projects'));
     }
 
     public function management()
     {
 
-        $management = Management::where('status',1)->orderBy('placement','ASC')->get();
+        $management = Management::where('status', 1)->orderBy('placement', 'ASC')->get();
         return view('management', compact('management'));
     }
 

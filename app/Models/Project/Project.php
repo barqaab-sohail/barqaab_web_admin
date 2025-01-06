@@ -19,4 +19,9 @@ class Project extends Model
     {
         return $this->belongsTo(ProjectCategory::class);
     }
+
+    public function projectImage()
+    {
+        return $this->hasOne(ProjectImage::class);
+    }
 }
